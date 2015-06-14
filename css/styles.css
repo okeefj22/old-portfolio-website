@@ -6,9 +6,9 @@ header {
   color: #E5C7A9;
   background: #39312A; }
   header h1 {
-    font-size: 70px;
+    font-size: 5em;
     margin: 0;
-    padding: 5%; }
+    padding: 1em 0; }
   header nav a {
     text-decoration: none;
     color: #E5C7A9; }
@@ -16,14 +16,22 @@ header {
     padding: 10px; }
   header nav li {
     display: inline;
-    padding: 0px 3% 0px 3%; }
+    padding: 0px 3% 0px 3%;
+    font-size: 1.2em; }
 
 article {
   margin: 0 auto;
-  padding: 1em 2em;
+  padding: 1rem 2rem;
   max-width: 960px; }
   article section {
     text-align: left;
-    padding: 0 3em 3em 3em; }
+    padding: 0 3rem 3rem 3rem; }
     article section h2 {
-      text-align: center; }
+      text-align: center;
+      font-size: 2em; }
+    article section h4 {
+      margin: 0; }
+    article section ul {
+      margin: 0; }
+    article section p {
+      font-size: 1em; }
