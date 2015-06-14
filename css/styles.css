@@ -1,0 +1,29 @@
+html {
+  text-align: center;
+  background: #EAEAEA; }
+
+header {
+  color: #E5C7A9;
+  background: #39312A; }
+  header h1 {
+    font-size: 70px;
+    margin: 0;
+    padding: 5%; }
+  header nav a {
+    text-decoration: none;
+    color: #E5C7A9; }
+  header nav ul {
+    padding: 10px; }
+  header nav li {
+    display: inline;
+    padding: 0px 3% 0px 3%; }
+
+article {
+  margin: 0 auto;
+  padding: 1em 2em;
+  max-width: 960px; }
+  article section {
+    text-align: left;
+    padding: 0 3em 3em 3em; }
+    article section h2 {
+      text-align: center; }
