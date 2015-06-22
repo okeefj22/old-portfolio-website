@@ -1,10 +1,10 @@
 html {
+  font-family: 'Inconsolata';
   text-align: center;
   background: #FFFFFE;
   color: #39312A; }
 
 header {
-  font-family: 'Inconsolata';
   color: #39312A;
   padding-bottom: 1.5em; }
   header h1 {
