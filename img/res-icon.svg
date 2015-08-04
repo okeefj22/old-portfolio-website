@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="37px" height="54px" viewBox="0 0 37 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 6</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard-6" sketch:type="MSArtboardGroup" transform="translate(-14.000000, -5.000000)" stroke="#48321F">
+            <g id="Res-Copy" sketch:type="MSLayerGroup" transform="translate(15.000000, 6.000000)">
+                <path d="M35,43.8029012 L35,0.913560766 C35,0.403484039 34.6204131,0 34.1521689,0 L0.847831136,0 C0.381137794,0 0,0.409015087 0,0.913560766 L0,51.0864392 C0,51.596516 0.379586929,52 0.847831136,52 L27.3296379,52 L35,43.8029012 L35,43.8029012 Z" id="Rectangle-9" stroke-width="2" stroke-linejoin="round" sketch:type="MSShapeGroup"></path>
+                <path d="M27.3170732,51.0877193 L27.3170732,44.245614" id="Line" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" sketch:type="MSShapeGroup"></path>
+                <path d="M34.1463415,43.7894737 L27.3170732,43.7894737" id="Line" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" sketch:type="MSShapeGroup"></path>
+                <path d="M7.25609756,9.57894737 L27.7439024,9.57894737" id="Line" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                <path d="M7.25609756,20.5263158 L27.7439024,20.5263158" id="Line-Copy" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                <path d="M7.25609756,31.4736842 L27.7439024,31.4736842" id="Line-Copy-2" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>
