@@ -40,6 +40,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/css\/styles.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/styles.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/doc\/css.md": {
 		"criticStyle": 0,
 		"enableFootnotes": 1,
@@ -241,6 +250,50 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/proj-icon.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3942,
+		"inputAbbreviatedPath": "\/img\/proj-icon.png",
+		"outputAbbreviatedPath": "\/img\/proj-icon.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/projj-icon.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 6872,
+		"inputAbbreviatedPath": "\/img\/projj-icon.png",
+		"outputAbbreviatedPath": "\/img\/projj-icon.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/res-icon.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3066,
+		"inputAbbreviatedPath": "\/img\/res-icon.png",
+		"outputAbbreviatedPath": "\/img\/res-icon.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/snip-icon.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4704,
+		"inputAbbreviatedPath": "\/img\/snip-icon.png",
+		"outputAbbreviatedPath": "\/img\/snip-icon.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/unituition.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -251,6 +304,26 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
+		},
+	"\/img\/x-icon.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 9953,
+		"inputAbbreviatedPath": "\/img\/x-icon.png",
+		"outputAbbreviatedPath": "\/img\/x-icon.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/index (2).html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/index (2).html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/index.html": {
 		"fileType": 8192,
@@ -316,6 +389,22 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/sass\/styles.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/sass\/styles.scss",
+		"outputAbbreviatedPath": "\/css\/styles.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
 	"\/tile-wide.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -346,8 +435,8 @@
 	},
 "projectAttributes": {
 	"bowerAbbreviatedPath": "",
-	"displayValue": "ajax",
-	"displayValueWasSetByUser": 0,
+	"displayValue": "jacob-ok.me",
+	"displayValueWasSetByUser": 1,
 	"iconImageName": "\/apple-touch-icon.png"
 	},
 "projectSettings": {

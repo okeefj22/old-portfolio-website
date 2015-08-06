@@ -144,7 +144,7 @@ body {
     margin-top: 11px;
 }
 
-.nav ul li.active {
+li.active {
     font-size: 16pt;
     /*font-weight: bold;*/
 }
@@ -162,33 +162,15 @@ body {
     float: right;
 }
 
-.content div.active {
+.content #resources-content p {
     display: block;
-}
-
-.content div.inactive {
-    display: none;
+    margin-bottom: 40px;
 }
 
 .content #resources-content a {
     display: block;
-    margin-top: 40px;
-}
+    margin-top: 3px;
 
-.content #about-content {
-    /*background: #eaeaea;*/
-}
-
-.content #projects-content {
-    /*background: #fff456;*/
-}
-
-.content #snippets-content {
-    /*background: #e45fff;*/
-}
-
-.content #resources-content {
-    /*background: #fa7700;*/
 }
 
 #project-list {
@@ -212,10 +194,44 @@ body {
     margin-bottom: 5px;
 }
 
+#x-icon {
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
 #projects-content div h2 {
     display: inline-block;
     margin-left: 11px;
 }
+
+#resources-content #resources-nav {
+    float: left;
+    width: 100px;
+}
+
+#resources-content #resources-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#resources-content #resources-nav ul li {
+    margin-bottom: 32px;
+    cursor: pointer;
+}
+
+#resources-content div {
+    float: right;
+    width: 600px;
+}
+
+pre {
+    margin: 32px;
+}
+
 
 
 

@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inconsolata">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="header">
+            <span>Jacob O'Keeffe</span>
+            <a href="http://www.github.com/okeefj22"><img src="/img/github.png"></a>
+            <a href="http://www.unituition.com"><img src="/img/unituition.png"></a>
+        </div>
+        <div class="nav">
+            <ul>
+                <li class="active" id="about">
+                    <img src="img/profile.jpg" alt="profile picture" id="profile">
+                    <span>About Me</span>
+                </li>
+                <li class="inactive" id="projects">
+                    <img src="img/proj-icon.svg" alt="lightbulb icon">
+                    <span>Projects</span>
+                </li>
+                <li class="inactive" id="snippets">
+                    <img src="img/snip-icon.svg" alt="braces icon">
+                    <span>Snippets</span>
+                </li>
+                <li class="inactive" id="resources">
+                    <img src="img/res-icon.svg" alt="resources icon">
+                    <span>Resources</span>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="active" id="about-content">
+                <p>I am 20 year old Software Developer living in Dublin. I'm currently working with SAP in Citywest as part of a two year cooperative internship with the company. My work will be primarily focused on the SAP HANA database and its accompanying business suite. I am also currently a registered tutor with UniTuition where I provide grinds in a number of CA1 modules. I was also employed by DCU as a programming lab tutor for first years throughout my second year in the University.</p>
+                <p>I have experience using many different programming languages; java, c++, python, x86 assembly, MIPS assembly, R and prolog, having completed numerous University assignments with each.</p>
+            </div>
+
+
+
+            <div class="inactive" id="projects-content">
+                <div class="show" id="proj-desc">
+                    <p>In my spare time I like to play around with new languages, tools and frameworks. I tend to learn by doing so when I'm trying to learn a new language I try to solve Project Euler problems in the new language.</p>
+                    <p>I'm currently immersed in Android Development. I have completed Google's 10 week 'Developing Android Apps' course on <a href="https://www.udacity.com/course/developing-android-apps--ud853">Udacity</a> and I'm now developing my own application for personal use. Learning Android development is something I've really been enjoying and it's made me lean towards choosing to develop an Android app for my 3rd year project in University.</p>
+                </div>
+                <div class="show" id="project-list">
+                    <div class="proj" id="standardise"><span>standardise</span> – Python script to rename files in a given directory to a specified standard</div>
+                </div>
+                <div class="hide" id="standardise-content">
+                    <img src="/img/back.png" alt="back button" id="back-icon">
+                    <h2>Standardise</h2>
+                    <p>I always seem to end up with files in my system which follow different naming conventions, whether it be 'foo bar.*', 'foo_bar.*' or my preferred 'foo-bar.*'. Worse again is when upper case letters are thrown into the mix. Seeing as I primarily use a BASH terminal for file operations, naming conventions are quite important to me.</p>
+                    <p>BASH is case sensitive and hitting the shift key requires effort so I prefer to have all my file names lower case. This is also my reasoning behind choosing hyphens as opposed to underscores for filenames. To solve my problem, I wrote a simple Python script to change filenames in a specified directory to my preferred file type.  then moved to my bin directory to allow me to call it system wide.</p>
+                    <p>Here is the code:</p>
+
+                        import os
+                        import sys
+
+                        work_dir = sys.argv[1]
+                        files = os.listdir(work_dir)
+
+                        for filename in files:
+                            new_filename = filename.replace(' ', '-').replace('_', '-')
+                            os.rename(
+                                os.path.join(work_dir, filename),
+                                    os.path.join(work_dir, new_filename.lower()))
+
+                    <p>Here are some example of it in use:</p>
+                    <p>It's a simple script which did a job I needed it to do. It doesn't ask the user for confirmation and there is no exception handling. With a little bit of refactoring the program could...</p>
+                </div>
+            </div>
+
+
+
+            <div class="inactive" id="snippets-content">
+                <p>This will eventually be home to little snippets of code such as those found at <a href="http://thecodeplayer.com">The CodePlayer</a>. Currently, I am loading all of the content on this website at once and only displaying it as required. For this to happen smoothly, I must keep the size of the content as small as possible. I plan to change the website so it loads the content using AJAX.</p>
+            </div>
+
+
+
+            <div class="inactive" id="resources-content">
+                <h3>Android</h3>
+                <div class="shown" id="android-container">
+                    <a href="http://www.reddit.com/r/androiddev/">/r/androiddev</a>
+                    <p>The Android development subreddit. As well as hundreds of links to resources, there are stories here written by seasoned Android developers, sharing their experiences in building applications for the platform.</p>
+                    <a href="http://www.reddit.com/r/androiddev/comments/15844c/heres_a_list_of_resources_i_used_while_creating/">Collection of resources to help you build an Android game</a>
+                    <a href="http://i.imgur.com/4VPm4.png">Activity lifecycle in one image</a>
+                    <a href="http://www.androidcentral.com/facebook-has-simple-solution-problem-so-many-different-phones">Facebook's library for providing appropriate animations to devices based on their graphical capability</a>
+                    <a href="http://guides.codepath.com/android">CodePath Android Cliffnotes</a>
+                    <p>CodePath's crowdsourced resource containing guides on many Android topics.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+</html>

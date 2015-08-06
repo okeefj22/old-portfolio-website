@@ -1,0 +1,91 @@
+body {
+  font-family: "Inconsolata";
+  width: 1024px;
+  margin: auto;
+  fill: #94d31b; }
+
+.header {
+  font-size: 32pt;
+  padding: 64px 32px 0px 0px;
+  border-bottom: 1px solid;
+  /*background: #bfbfbf;*/ }
+  .header span {
+    margin-right: 585px; }
+  .header img {
+    height: 32px;
+    width: 32px; }
+
+.nav {
+  border-right: 1px solid;
+  margin: 0;
+  width: 174px;
+  text-align: center;
+  padding-top: 32px;
+  float: left; }
+  .nav ul {
+    margin: 0;
+    padding: 0; }
+    .nav ul li {
+      list-style: none;
+      padding: 0px;
+      margin-bottom: 64px;
+      cursor: pointer; }
+      .nav ul li .active {
+        font-size: 16pt;
+        /*font-weight: bold;*/ }
+      .nav ul li span {
+        display: block;
+        margin-top: 11px; }
+
+#profile {
+  height: 128px;
+  width: 128px;
+  border: 2px solid;
+  border-radius: 100%; }
+
+.content {
+  width: 750px;
+  padding: 32px;
+  float: right; }
+  .content div.active {
+    display: block; }
+  .content div.inactive {
+    display: none; }
+
+#project-list {
+  margin-top: 64px; }
+  #project-list span {
+    font-weight: bold;
+    cursor: pointer; }
+  #project-list .hide {
+    display: none; }
+
+#back-icon {
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 5px; }
+
+#x-icon {
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 5px; }
+
+#projects-content div h2 {
+  display: inline-block;
+  margin-left: 11px; }
+
+#resources-content p {
+  display: block;
+  margin-bottom: 40px; }
+#resources-content #resources-nav {
+  float: left;
+  width: 100px; }
+  #resources-content #resources-nav ul {
+    list-style: none; }
+#resources-content div {
+  float: right;
+  width: 600px; }

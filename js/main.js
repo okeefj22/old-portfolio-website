@@ -1,11 +1,22 @@
-$( "li" ).click(function() {
+$( ".nav li" ).click(function() {
     var show = $( this ).attr( "id" ) + "-content";
-    var hide = $( "li.active" ).attr( "id" ) + "-content";
+    var hide = $( ".nav li.active" ).attr( "id" ) + "-content";
 
-    $( "li.active" ).toggleClass( "active inactive" );
-    $( "#"+hide ).toggleClass( "active inactive" );
+    $( ".nav li.active" ).toggleClass( "active inactive" );
+    $( "#"+hide ).toggleClass( "hidden" );
     $( this ).toggleClass( "inactive active" );
-    $( "#"+show ).toggleClass( "inactive active" );
+    $( "#"+show ).toggleClass( "hidden" );
+
+});
+
+$( "#resources-nav li" ).click(function() {
+    var show = $( this ).attr( "id" ) + "-content";
+    var hide = $( "#resources-nav li.active" ).attr( "id" ) + "-content";
+
+    $( "#resources-nav li.active" ).toggleClass( "active inactive" );
+    $( "#"+hide ).toggleClass( "hidden" );
+    $( this ).toggleClass( "inactive active" );
+    $( "#"+show ).toggleClass( "hidden" );
 
 });
 
