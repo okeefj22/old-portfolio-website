@@ -99,18 +99,22 @@ body {
     font-family: "Inconsolata";
     width: 1024px;
     margin: auto;
-    fill: #94d31b;
 }
 
 .header {
     font-size: 32pt;
-    padding: 64px 32px 0px 0px;
+    padding: 64px 0px 0px 0px;
     border-bottom: 1px solid;
     /*background: #bfbfbf;*/
+    overflow: hidden;
 }
 
 .header span {
-    margin-right: 585px;
+    float: left;
+}
+
+.header #links {
+    float: right;
 }
 
 .header img {
