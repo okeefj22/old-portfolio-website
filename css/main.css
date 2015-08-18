@@ -136,6 +136,16 @@ body {
     padding: 0;
 }
 
+.nav ul a:link, a:visited {
+    text-decoration: none;
+    color: #222;
+}
+
+#resources-nav a:link, a:visited {
+    text-decoration: none;
+    color: #222;
+}
+
 .nav ul li {
     list-style: none;
     padding: 0px;
@@ -211,23 +221,23 @@ li.active {
     margin-left: 11px;
 }
 
-#resources-content #resources-nav {
+#resources-nav {
     float: left;
     width: 100px;
 }
 
-#resources-content #resources-nav ul {
+#resources-nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-#resources-content #resources-nav ul li {
+#resources-nav ul li {
     margin-bottom: 32px;
     cursor: pointer;
 }
 
-#resources-content div {
+.resources-content {
     float: right;
     width: 600px;
 }
@@ -235,7 +245,6 @@ li.active {
 pre {
     margin: 32px;
 }
-
 
 
 
