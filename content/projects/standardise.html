@@ -51,13 +51,27 @@
         </div>
         <div class="content">
             <div id="container">
-                <div id="proj-desc">
-                    <p>In my spare time I like to play around with new languages, tools and frameworks. I tend to learn by doing so when I'm learning a new language I try to solve Project Euler problems in the new language.</p>
-                    <p>I'm currently immersed in Android Development. I have completed Google's 10 week 'Developing Android Apps' course on <a href="https://www.udacity.com/course/developing-android-apps--ud853">Udacity</a> and I'm now developing my own application for personal use. Learning Android development is something I've really been enjoying and it's made me lean towards choosing to develop an Android app for my 3rd year project in University.</p>
-                    <p>I am in the process of documenting previous projects and moving them to Github. This is proving to be quite time consuming so this section does not currently reflect all the work I've done.</p>
-                </div>
-                <div id="project-list">
-                    <div class="proj" id="standardise"><span><a href="/content/projects/standardise.html">standardise</a></span> – Python script to rename files in a given directory to a specified standard</div>
+                <div class="proj">
+                    <a href="/content/projects/projects.html"><img src="/img/back.png" alt="back button" id="back-icon"></a>
+                    <h2>Standardise</h2>
+                    <p>I always seem to end up with files in my system which follow different naming conventions, whether it be 'foo bar.*', 'foo_bar.*' or my preferred 'foo-bar.*'. Worse again is when upper case letters are thrown into the mix. Seeing as I primarily use a BASH terminal for most file operations, naming conventions are quite important to me.</p>
+                    <p>BASH is case sensitive and hitting the shift key requires effort so I prefer to have all my file names lower case. This is also my reasoning behind choosing hyphens as opposed to underscores for filenames. To solve my problem, I wrote a simple Python script to change filenames in a specified directory to my preferred file type. I then moved the program to my bin directory to allow me to call it system wide.</p>
+                    <p>Here is the code:</p>
+<pre>
+import os
+import sys
+
+work_dir = sys.argv[1]
+files = os.listdir(work_dir)
+
+for filename in files:
+    new_filename = filename.replace(' ', '-').replace('_', '-')
+    os.rename(
+        os.path.join(work_dir, filename),
+            os.path.join(work_dir, new_filename.lower()))
+
+</pre>
+                    <p>It's a simple script which did a job I needed it to do. It doesn't ask the user for confirmation and there is no exception handling. With a little bit of refactoring the program could become useful for more general cases, replacing an array of user specified characters.</p>
                 </div>
             </div>
         </div>

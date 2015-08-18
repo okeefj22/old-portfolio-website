@@ -58,13 +58,23 @@ $('.nav a').on('click', function(e) {
 $('.content').on('click', '#resources-nav a', function(e) {
     e.preventDefault();
     var url = this.href;
-    // var id = '#' + this.parent().parent().attr('id') + '-content';
 
     $('#resources-nav li.active').removeClass('active');
     $(this).parent().parent().addClass('active');
 
     $('#resources-container').remove();
     $('.resources-content').load(url + ' #resources-container').hide().fadeIn('slow');
+});
+
+$('.content').on('click', '.proj a', function(e) {
+    e.preventDefault();
+    var url = this.href;
+
+    $('#container').remove();
+    $('.content').load(url + ' #container').hide().fadeIn('slow');
+
+    // $('#resources-nav li.active').removeClass('active');
+    // $(this).parent().parent().addClass('active');
 });
 
 // $('.content').on('click', '#resources-nav a', function() {
