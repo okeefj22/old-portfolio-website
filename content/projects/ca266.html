@@ -50,28 +50,80 @@
             </ul>
         </div>
         <div class="content">
-            <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
             <div id="container">
                 <div class="proj">
                     <a href="/content/projects/projects.html"><img src="/img/back.png" alt="back button" id="back-icon"></a>
-                    <h2>Standardise</h2>
+                    <h2>Analysis of Horse Racing Results</h2>
                     <p>I always seem to end up with files in my system which follow different naming conventions, whether it be 'foo bar.*', 'foo_bar.*' or my preferred 'foo-bar.*'. Worse again is when upper case letters are thrown into the mix. Seeing as I primarily use a BASH terminal for most file operations, naming conventions are quite important to me.</p>
                     <p>BASH is case sensitive and hitting the shift key requires effort so I prefer to have all my file names lower case. This is also my reasoning behind choosing hyphens as opposed to underscores for filenames. To solve my problem, I wrote a simple Python script to change filenames in a specified directory to my preferred file type. I then moved the program to my bin directory to allow me to call it system wide.</p>
                     <p>Here is the code:</p>
 <pre class="prettyprint">
 
-    import os
-    import sys
+    ### declaration of functions ###
 
-    work_dir = sys.argv[1]
-    files = os.listdir(work_dir)
+    MilesToFeet <- function(distance) {
+      return(distance * 5280)  # 5280 feet in a mile
+    }
 
-    for filename in files:
-        new_filename = filename.replace(' ', '-').replace('_', '-')
-        os.rename(
-            os.path.join(work_dir, filename),
-                os.path.join(work_dir, new_filename.lower()))
-                
+    # take a factor as a parameter and return a numerical value
+    # values were aquired from http://www.spreadex.com/sports/get-started/horse-racing-spread-betting/winning-distances/
+    GetLength <- function(l) {
+      l0 <- as.character(l)
+      if (l0 == 'Dht') {
+        return(0)
+      } else if (l0 == 'nose') {
+        l.val <- 0.05
+      } else if (l0 == 'shd') {
+        l.val <- 0.1
+      } else if (l0 == 'hd') {
+        l.val <- 0.2
+      } else if (l0 == 'nk') {
+        l.val <- 0.3
+      } else {
+        l.val <- as.numeric(substr(l0, 1, (nchar(l0) - 1)))  # need to remove the 'L' from the value to convert it to numeric
+      }
+      return(l.val * 8)  # a horse length is roughly 8ft
+    }
+
+    GetSpeed <- function(distance, time) {
+      return(distance / time)
+    }
+
+    GetTime <- function(distance, speed) {
+      return(distance / speed)
+    }
+
+    # function which determines whether or not a horse finished a race and returns a boolean value
+    HorseFinished <- function(british, i) {
+      position <- as.character(british[i, 'Position.uk'])  # 'Position.uk' is a factor and needs to converted to a string so that the substr() function can be applyed to it
+      a <- substr(position, 2, 3)  # last two characters of '2nd', '3rd', '4th' etc.
+      b <- substr(position, 3, 4)  # last two characters of '21st', '22nd' etc.
+      # the only time a can be 'st' is if it was part of '1st' which has already been accounted for
+      return(b == 'st' || a == 'nd' || b == 'nd' || a == 'rd' || b == 'rd' || a == 'th' || b == 'th')
+    }
+
+
+    ### beginning of actual code ###
+
+    british <- read.csv('C/CA266/Project/british results.csv')
+
+    british$'Time in secs' <- 0  # create a new column with the header 'finish time' and itialise all values to 0
+
+    for (i in 1:nrow(british)) {
+      if (british[i, 'Position.uk'] == '1st') {
+        british[i, 'finish.time'] <- british[i, 'Winner.Race.Time']
+      } else if (HorseFinished(british, i)) {
+        previous.time <- british[(i - 1), 'finish.time']
+        behind <- GetLength(british[i, 'Behind'])
+        distance <- MilesToFeet(british[i, 'distance'])
+        speed <- GetSpeed((distance - behind), previous.time)
+        seconds.behind <- GetTime(behind, speed)
+        british[i, 'finish.time'] <- previous.time + seconds.behind
+      }
+    }
+
+    write.csv(british, 'C/CA266/Project/british results.csv)
+
 </pre>
                     <p>It's a simple script which did a job I needed it to do. It doesn't ask the user for confirmation and there is no exception handling. With a little bit of refactoring the program could become useful for more general cases, replacing an array of user specified characters.</p>
                 </div>

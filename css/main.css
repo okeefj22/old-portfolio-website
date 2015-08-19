@@ -101,6 +101,12 @@ body {
     margin: auto;
 }
 
+a:link, a:visited {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .header {
     font-size: 32pt;
     padding: 64px 0px 0px 0px;
@@ -137,13 +143,11 @@ body {
 }
 
 .nav ul a:link, a:visited {
-    text-decoration: none;
-    color: #222;
+    font-weight: normal;
 }
 
 #resources-nav a:link, a:visited {
-    text-decoration: none;
-    color: #222;
+    font-weight: normal;
 }
 
 .nav ul li {
@@ -176,26 +180,26 @@ li.active {
     float: right;
 }
 
-.content #resources-content p {
+.content #resources-container p {
     display: block;
     margin-bottom: 40px;
 }
 
-.content #resources-content a {
+.content #resources-container a {
     display: block;
     margin-top: 3px;
 
 }
 
-#project-list {
+#project-list h2 {
     margin-top: 64px;
 }
 
-#project-list span {
+/*#project-list span {
     font-weight: bold;
     cursor: pointer;
 }
-
+*/
 #projects-content .hide {
     display: none;
 }
@@ -242,11 +246,88 @@ li.active {
     width: 600px;
 }
 
-pre {
-    margin: 32px;
+/****************************************************************************
+CSS for the snippets
+****************************************************************************/
+
+/*Time to apply widths for accordian to work
+Width of image = 640px
+total images = 5
+so width of hovered image = 640px
+width of un-hovered image = 40px - you can set this to anything
+so total container width = 640 + 40*4 = 800px;
+default width = 800/5 = 160px;
+*/
+
+#snip * {
+    margin: 0;
+    padding: 0;
 }
 
+.accordian {
+    width: 805px; height: 320px;
+    overflow: hidden;
+    
+    /*Time for some styling*/
+    margin: 100px auto;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+    -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.35);
+}
 
+/*A small hack to prevent flickering on some browsers*/
+.accordian ul {
+    width: 2000px;
+    /*This will give ample space to the last item to move
+    instead of falling down/flickering during hovers.*/
+}
+
+.accordian li {
+    position: relative;
+    display: block;
+    width: 160px;
+    float: left;
+    
+    border-left: 1px solid #888;
+    
+    box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+    
+    /*Transitions to give animation effect*/
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    /*If you hover on the images now you should be able to 
+    see the basic accordian*/
+}
+
+/*Reduce with of un-hovered elements*/
+.accordian ul:hover li {width: 40px;}
+/*Lets apply hover effects now*/
+/*The LI hover style should override the UL hover style*/
+.accordian ul li:hover {width: 640px;}
+
+
+.accordian li img {
+    display: block;
+}
+
+/*Image title styles*/
+.image_title {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0; bottom: 0; 
+width: 640px;   
+
+}
+.image_title a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 20px;
+    font-size: 16px;
+}
 
 
 
@@ -391,7 +472,6 @@ pre {
 
     pre,
     blockquote {
-        border: 1px solid #999;
         page-break-inside: avoid;
     }
 

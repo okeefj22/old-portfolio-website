@@ -1,0 +1,183 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inconsolata">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="header">
+            <span>Jacob O'Keeffe</span>
+            <div id="links">
+                <a href="http://www.github.com/okeefj22"><img src="/img/github.png"></a>
+                <a href="http://www.unituition.com"><img src="/img/unituition.png"></a>
+            </div>
+        </div>
+        <div class="nav">
+            <ul>
+                <a href="/content/about/about.html"><li id="about" class="active">
+                    <img src="/img/profile.jpg" alt="profile picture" id="profile">
+                    <span>About Me</span>
+                </li></a>
+                <a href="/content/projects/projects.html"><li id="projects">
+                    <img src="/img/projj-icon.png" alt="lightbulb icon" class="nav-icons">
+                    <span>Projects</span>
+                </li></a>
+                <a href="/content/snippets/snippets.html"><li id="snippets">
+                    <img src="/img/snip-icon.png" alt="braces icon" class="nav-icons">
+                    <span>Snippets</span>
+                </li></a>
+                <a href="/content/resources/resources.html"><li id="resources">
+                    <img src="/img/res-icon.png" alt="resources icon" class="nav-icons">
+                    <span>Resources</span>
+                </li></a>
+            </ul>
+        </div>
+        <div class="content">
+            <div id="container">
+                <div class="proj">
+                    <a href="/content/projects/projects.html"><img src="/img/back.png" alt="back button" id="back-icon"></a>
+                    <h2>League Table Generator (In Progress)</h2>
+                    <p>Throughout the year in college, my roommates and I would play a few games of FIFA a week. We wanted an easy way keep track of our results, and most importantly, to see who had the most points on average. The best solution we found was an excel sheet where you enter your results and it generates a league table from them. This involved a workaround of placing the excel sheet in a shared Google Drive folder where any of us could edit it. Editing an excel sheet on your phone isn't exactly ideal so I looked to come up with a better solution. I immediately thought of storing the results in a database and generating the table using JOINs on various SELECT statements. I spent a few hours designing my database and trying to normalise it. I decided that the table could be generated from one very simple table containing only the player names and their scores (and an id as a primary key).</p>
+                    <p>Below is the database design:</p>
+<pre class="prettyprint">
+
+    CREATE TABLE Fixtures (
+        Match_ID INTEGER PRIMARY KEY,
+        Player_1 TEXT,
+        Score_1 INTEGER,
+        Player_2 TEXT,
+        Score_2 INTEGER
+    );
+
+</pre>
+                    <p>And here is the SELECT statment:</p>
+<pre class="prettyprint">
+    
+    SELECT X.Name AS Name, P, W, D, L, F, A, (F - A) AS GD, ((W * 3) + D) AS Pts,  ROUND((((W * 3.0) + D) / P),2) AS Avg
+    FROM ((SELECT Name, SUM(For) AS F
+          FROM (SELECT Player_2 AS Name, SUM(Score_2) AS For
+                FROM Fixtures
+                GROUP BY Name
+                UNION ALL
+                SELECT Player_1 AS Name, SUM(Score_1) AS For
+                FROM Fixtures
+                GROUP BY Name)
+          GROUP BY Name) AS a LEFT JOIN
+         ((SELECT Name, SUM(Against) AS A
+           FROM (SELECT Player_2 AS Name, SUM(Score_1) AS Against
+                 FROM Fixtures
+                 GROUP BY Name
+                 UNION ALL
+                 SELECT Player_1 AS Name, SUM(Score_2) AS Against
+                 FROM Fixtures
+                 GROUP BY Name)
+           GROUP BY Name) AS b LEFT JOIN
+          (SELECT Name, Count(Name) AS P
+           FROM (SELECT Player_2 AS Name
+                 FROM Fixtures
+                 UNION ALL
+                 SELECT Player_1 AS Name
+                 FROM Fixtures)
+           GROUP BY Name) AS c ON
+          b.Name = c.Name) AS d ON
+         a.Name = d.Name) AS X LEFT JOIN
+         (SELECT e.Name, ifnull(Won,0) AS W, ifnull(Drawn,0) AS D, ifnull(Lost,0) AS L
+         FROM (((SELECT Name, COUNT(Result) AS Won
+           FROM (SELECT Player_1 AS Name,
+                     CASE
+                         WHEN Score_1 > Score_2 THEN "W"
+                         WHEN Score_1 = Score_2 THEN "D"
+                         ELSE "L"
+                     END AS Result
+                 FROM Fixtures
+                 UNION ALL
+                 SELECT Player_2 AS Name,
+                     CASE
+                         WHEN Score_2 > Score_1 THEN "W"
+                         WHEN Score_1 = Score_2 THEN "D"
+                         ELSE "L"
+                     END AS Result
+                 FROM Fixtures)
+           WHERE Result = "W"
+           GROUP BY Name) AS e LEFT JOIN
+           (SELECT Name, COUNT(Result) AS Drawn
+           FROM (SELECT Player_1 AS Name,
+                     CASE
+                         WHEN Score_1 > Score_2 THEN "W"
+                         WHEN Score_1 = Score_2 THEN "D"
+                         ELSE "L"
+                     END AS Result
+                 FROM Fixtures
+                 UNION ALL
+                 SELECT Player_2 AS Name,
+                     CASE
+                         WHEN Score_2 > Score_1 THEN "W"
+                         WHEN Score_1 = Score_2 THEN "D"
+                         ELSE "L"
+                     END AS Result
+                 FROM Fixtures)
+           WHERE Result = "D"
+           GROUP BY Name) AS f ON
+           e.Name = f.Name) LEFT JOIN
+           (SELECT Name, COUNT(Result) AS Lost
+           FROM (SELECT Player_1 AS Name,
+                     CASE
+                         WHEN Score_1 > Score_2 THEN "W"
+                         WHEN Score_1 = Score_2 THEN "D"
+                         ELSE "L"
+                     END AS Result
+                 FROM Fixtures
+                 UNION ALL
+                 SELECT Player_2 AS Name,
+                     CASE
+                         WHEN Score_2 > Score_1 THEN "W"
+                         WHEN Score_1 = Score_2 THEN "D"
+                         ELSE "L"
+                     END AS Result
+                 FROM Fixtures)
+           WHERE Result = "L"
+           GROUP BY Name) AS g ON
+           e.Name = g.Name)) AS Y ON
+           X.Name = Y.Name
+    ORDER BY Avg DESC;
+
+</pre>
+                    <p>I'm sure the SELECT statement can be optimised and I will look into how to go about this.</p>
+                    <p>I'm going to integrate this into an Android application which is why I wrote it in SQLite.</p>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+</html>
